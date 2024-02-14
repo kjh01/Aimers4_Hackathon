@@ -67,7 +67,7 @@ x_train, x_val, y_train, y_val = train_test_split(
 )
 
 # [모델 학습]
-model = LogisticRegression(max_iter=500)
+model = LogisticRegression(max_iter=1000)
 model.fit(x_train.fillna(0), y_train)
 
 def get_clf_eval(y_test, y_pred=None):
@@ -83,8 +83,9 @@ def get_clf_eval(y_test, y_pred=None):
     print("재현율: {:.4f}".format(recall))
     print("F1: {:.4f}".format(F1))
 
-    pred = model.predict(x_val.fillna(0))
-    get_clf_eval(y_val, pred)
+pred = model.predict(x_val.fillna(0))
+get_clf_eval(y_val, pred)
+
 
 '''[제출하기]'''
 # 예측에 필요한 데이터 분리

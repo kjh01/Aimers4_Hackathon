@@ -6,6 +6,7 @@ from sklearn.metrics import (
     precision_score,
     recall_score,
 )
+from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
@@ -68,7 +69,25 @@ x_train, x_val, y_train, y_val = train_test_split(
 
 # [모델 학습]
 model = DecisionTreeClassifier()
-model.fit(x_train.fillna(0), y_train)
+# 탐색할 하이퍼파라미터 그리드 정의
+param_grid = {
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+# 그리드 서치 객체 생성
+grid_search = GridSearchCV(model, param_grid, cv=5, scoring='f1')
+
+# 그리드 서치 수행
+grid_search.fit(x_train.fillna(0), y_train)
+
+# 최적의 모델 선택
+model = grid_search.best_estimator_
+
+# 최적의 하이퍼파라미터 출력
+print("최적의 하이퍼파라미터:", grid_search.best_params_)
+
 
 def get_clf_eval(y_test, y_pred=None):
     confusion = confusion_matrix(y_test, y_pred, labels=[True, False])
@@ -99,4 +118,4 @@ df_sub = pd.read_csv("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Data
 df_sub["is_converted"] = test_pred
 
 # 제출 파일 저장
-df_sub.to_csv("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/save.csv", index=False)
+df_sub.to_csv("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/save3.csv", index=False)
