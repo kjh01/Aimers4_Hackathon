@@ -91,7 +91,8 @@ def get_clf_eval(y_test, y_pred=None):
 x_test = df_test.drop(["is_converted", "id"], axis=1)
 
 test_pred = model.predict(x_test.fillna(0))
-sum(test_pred) # True로 예측된 개수
+print(len(test_pred))
+print(sum(test_pred)) # True로 예측된 개수
 
 # 제출 데이터 읽어오기 (df_test는 전처리된 데이터가 저장됨)
 df_sub = pd.read_csv("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/submission.csv")
