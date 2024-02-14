@@ -69,6 +69,7 @@ x_train, x_val, y_train, y_val = train_test_split(
 # [모델 학습]
 model = DecisionTreeClassifier()
 model.fit(x_train.fillna(0), y_train)
+model.save("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Model/model.h5")
 
 def get_clf_eval(y_test, y_pred=None):
     confusion = confusion_matrix(y_test, y_pred, labels=[True, False])

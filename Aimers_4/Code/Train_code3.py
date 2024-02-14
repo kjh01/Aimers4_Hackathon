@@ -84,9 +84,10 @@ grid_search.fit(x_train.fillna(0), y_train)
 
 # 최적의 모델 선택
 model = grid_search.best_estimator_
+# model.save("C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Model/model3.h5")
 
 # 최적의 하이퍼파라미터 출력
-print("최적의 하이퍼파라미터:", grid_search.best_params_)
+# print("최적의 하이퍼파라미터:", grid_search.best_params_)
 
 
 def get_clf_eval(y_test, y_pred=None):
