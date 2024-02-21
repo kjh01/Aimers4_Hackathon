@@ -7,14 +7,12 @@ import pandas as pd
 train = pd.read_csv('C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/train.csv')
 print("\n[train]")
 # print(train.head(5))
-# print(train.columns)
-print(train['business_unit'].unique())
+print(train.columns)
 
 train2 = pd.read_csv('C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/train2.csv')
 print("\n[train2]")
 # print(train2.head(5))
-# print(train2.columns)
-print(train2['business_unit'].unique())
+print(train2.columns)
 
 # save = pd.read_csv('C:/Users/user/PycharmProjects/pythonProject3/Aimers_4/Dataset/save.csv')
 # print("\n[save]")
